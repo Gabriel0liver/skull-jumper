@@ -1,4 +1,4 @@
-# Project's name
+# SKULL JUMPER
 
 ## Description
 Skull jumper is a game where the objective is to control the main character and make him go from one side of the sreen to the other. On the way you will come accross challanges like jumping over big drops.
