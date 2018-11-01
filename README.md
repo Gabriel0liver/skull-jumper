@@ -1,7 +1,7 @@
 # SKULL JUMPER
 
 ## Description
-Skull jumper is a game where the objective is to control the main character and make him go from one side of the sreen to the other. On the way you will come accross challanges like jumping over big drops.
+Skull jumper is a game where the objective is to control the main character and make him go from one side of the screen to the other. On the way you will come accross challanges like jumping over big drops.
 
 
 ## MVP (DOM - CANVAS)
@@ -9,10 +9,10 @@ Skull jumper is a game where the objective is to control the main character and 
 
 
 ## Backlog
--Enemies
--Multiple levels
--Sprites
--Moving platforms
+- Enemies
+- Multiple levels
+- Sprites
+- Moving platforms
 
 
 ## Data structure
@@ -27,9 +27,7 @@ Game.prototype.startGame(){
 }
 
 Game.prototype.startLoop(){
-}
-
-Game.prototype.loop(){
+  loop()
 }
 
 Game.prototype.updateAll(){
@@ -41,7 +39,10 @@ Game.prototype.clearAll(){
 Game.prototype.renderAll(){
 }
 
-Game.prototype.collison(){
+Game.prototype.checkAllCollisons(){
+}
+
+Game.prototype.finishGameCallback(){
 }
 ```
 
@@ -58,10 +59,13 @@ Character(){
 Character.prototype.update(){
 }
 
+Character.prototype.render(){
+}
+
 Character.prototype.move(){
 }
 
-Character.prototype.collision(){
+Character.prototype.checkCollisionWithBlock(block){
 }
 
 Character.prototype.death(){
@@ -76,8 +80,7 @@ Character.prototype.gravity(){
 Character.prototype.jump(){
 }
 
-Character.prototype.render(){
-}
+
 ```
 
 ### block.js
@@ -116,28 +119,29 @@ Block.prototype.render(){
   - addEventListener( if splashScreen, else startGame) 
 ```
 
-
 ## Task
 - Main - buildDom
 - Main - buildSplash
 - Main - addEventListener
 - Main - destroySplash
+- Main - 3 states transitions
 - Game - buildDom
 - Game - TimeOut test
+- Game - 3 states transitions
 - Main - GameWon
 - Main - destroy Game
 - Main - GameWon RESTART
 - Main - removeGameWon
 - Game - restartGame
 - Game - addEventListener
+- Block - create
 - Game - create player
 - Player - create
 - Player - move
 - Player - gravity
-- Block - create
 - Player - collision
 - Player - jump
-
+- Game - check win
 
 ## Links
 
