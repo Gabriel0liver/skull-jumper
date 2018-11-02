@@ -1,3 +1,32 @@
+@import url('https://fonts.googleapis.com/css?family=Oswald');
+
 canvas{
     border: solid 2px black;
+}
+
+body{
+    background-color: #F2F2F2
+}
+
+.win, .splash{
+    margin-top: 25%;
+    text-align: center;
+}
+
+h1{
+    font-family: "Oswlald", sans-serif;
+    font-weight: bold;
+    font-size: 3em;
+}
+
+button{
+    font-family: "Oswlald", sans-serif;
+    font-weight: bold;
+    font-size: 2em;
+    color:white;
+    background-color: black;
+    border: 0;
+    border-radius: 10px;
+    width: 200px;
+    height: 75px;
 }

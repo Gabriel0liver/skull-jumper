@@ -1,23 +1,22 @@
 "use strict";
 
 function Game(){
-	
-}
-
-
-Game.prototype.start = function () {
-	gameIsOver = false;
-
 	this.canvas = document.querySelector("canvas");
 	this.ctx = this.canvas.getContext("2d");
 
 	this.canvas.width = 960;
 	this.canvas.height = 540;
 
-	this.character = new Character();
-	
 	this.collision = false;
 	this.time = 0;
+}
+
+
+Game.prototype.start = function () {
+	gameIsOver = false;
+
+	this.character = new Character();
+	
 	this.startLoop();
 
 	this.createBlocks();
@@ -39,12 +38,52 @@ Game.prototype.startLoop = function(){
 }
 
 Game.prototype.update = function(){
+	this.movement();
 	this.character.x += this.character.xSpeed;
 	this.checkCollisions();
+}
+
+Game.prototype.render = function () {
+	this.ctx.fillStyle = "#DEE5E5";
+	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
+	this.ctx.fillStyle = "#161616";
+	this.character.render();
+	this.blocks.forEach(function(block){
+		block.render();
+	})
+}
+
+Game.prototype.checkCollisions = function(){
+	var collisions = 0;
+	this.blocks.forEach(function(block){
+		var collidesRight = this.character.x + this.character.size > block.x;
+		var collidesLeft = this.character.x< block.x + block.size;
+		var collidesTop = this.character.y - this.character.size < block.y;
+		var collidesBottom = this.character.y + this.character.size >= block.y;
+
+		if (collidesBottom && collidesLeft && collidesRight && collidesTop) {
+			this.character.jumped = false;
+			this.character.y = block.y - this.character.size;
+			this.collision = true;
+			this.time = 0
+			collisions++;
+		}else{
+			this.collision = false;
+		}
+	}.bind(this))
+
+	if(collisions === 0){
+		this.character.jumped = true;
+	}
+
 	if(!this.collision){
 		this.time += 1;
 		this.character.ySpeed = this.character.gravity * this.time;
-		this.character.y += this.character.ySpeed;	
+		this.character.y += this.character.ySpeed;
+		//this.character.jumped = true;
+	}
+	if(this.collision){
+		this.character.jumped = false;
 	}
 	if(this.character.y + this.character.size > this.canvas.height)	{
 		this.character.y = 400;
@@ -53,32 +92,7 @@ Game.prototype.update = function(){
 	if(this.character.x + this.character.size > this.canvas.width){
 		buildWinGame();
 	}
-}
-
-Game.prototype.render = function () {
-	this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
-	this.character.render();
-	this.blocks.forEach(function(block){
-		block.render();
-	})
-}
-
-Game.prototype.checkCollisions = function(){
-	this.blocks.forEach(function(block){
-		var collidesRight = this.character.x + this.character.size > block.x;
-		var collidesLeft = this.character.x< block.x + block.size;
-		var collidesTop = this.character.y - this.character.size < block.y;
-		var collidesBottom = this.character.y + this.character.size > block.y;
-
-		if (collidesBottom && collidesLeft && collidesRight) {
-			this.character.y = block.y - this.character.size;
-			this.collision = true;
-			this.character.jumped = false;
-			this.time = 0
-		}else{
-			this.collision = false;
-		}
-	}.bind(this))
+	
 }
 
 

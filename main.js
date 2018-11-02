@@ -22,7 +22,7 @@ function main(){
     function buildSplash(){
 
         splashDom = buildDom(`
-            <main>
+            <main class="splash">
                 <h1>SKULL JUMPER</h1>
                 <button>Start</button>
             </main>
@@ -32,6 +32,8 @@ function main(){
 
         buttonStart = splashDom.querySelector('button');
         buttonStartListner = buttonStart.addEventListener('click', buildGameScreen);
+
+        //buildGameScreen();
     }
 
     function destroySplash(){
@@ -68,7 +70,7 @@ function main(){
         destroyGameScreen();
         
         winDom = buildDom(`
-            <main>
+            <main class="win">
                 <h1>YOU WIN!</h1>
                 <button>Restart</button>
             </main>

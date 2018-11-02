@@ -8,6 +8,9 @@ function Character(){
     this.size = 50;
     this.gravity = 0.5;
     this.jumped = true;
+    this.rightIsDown = false;
+    this.leftIsDown = false;
+    this.rightLeftDown = false;
 
 }
 
