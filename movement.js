@@ -1,6 +1,5 @@
 Game.prototype.handleKeyDown = function(event){
   if (event.key === 'ArrowRight'){
-    console.log()
     if(this.character.leftIsDown === false){
       this.character.rightIsDown = true;
       this.character.rightLeftDown = false;
@@ -37,7 +36,6 @@ Game.prototype.handleKeyUp = function(event){
   }
   if (event.key === 'ArrowLeft'){
     if(this.character.rightLeftDown){
-      console.log("hey")
       this.character.leftIsDown = false;
       this.character.rightIsDown = true;
       this.character.rightLeftDown = false;

@@ -11,9 +11,10 @@ function Character(){
     this.rightIsDown = false;
     this.leftIsDown = false;
     this.rightLeftDown = false;
+    this.animation = new Animation();
 
 }
 
-Character.prototype.render = function(){
-    this.ctx.fillRect(this.x, this.y, this.size, this.size);
+Character.prototype.render = function(game){
+    this.animation.render(game)
 }

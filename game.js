@@ -1,11 +1,7 @@
 "use strict";
 
 function Game(){
-	this.canvas = document.querySelector("canvas");
-	this.ctx = this.canvas.getContext("2d");
 
-	this.canvas.width = 960;
-	this.canvas.height = 540;
 
 	this.collision = false;
 	this.time = 0;
@@ -13,6 +9,12 @@ function Game(){
 
 
 Game.prototype.start = function () {
+	this.canvas = document.querySelector("canvas");
+	this.ctx = this.canvas.getContext("2d");
+
+	this.canvas.width = 960;
+	this.canvas.height = 540;
+
 	gameIsOver = false;
 
 	this.character = new Character();
@@ -29,7 +31,7 @@ Game.prototype.start = function () {
 Game.prototype.startLoop = function(){
 	function loop(){
 		this.update();
-		this.render();
+		this.renderAll();
 		if(!gameIsOver){
 		window.requestAnimationFrame(loop.bind(this));
 		}
@@ -43,11 +45,11 @@ Game.prototype.update = function(){
 	this.checkCollisions();
 }
 
-Game.prototype.render = function () {
+Game.prototype.renderAll = function () {
 	this.ctx.fillStyle = "#DEE5E5";
 	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	this.ctx.fillStyle = "#161616";
-	this.character.render();
+	this.character.render(this);
 	this.blocks.forEach(function(block){
 		block.render();
 	})
@@ -80,12 +82,11 @@ Game.prototype.checkCollisions = function(){
 		this.time += 1;
 		this.character.ySpeed = this.character.gravity * this.time;
 		this.character.y += this.character.ySpeed;
-		//this.character.jumped = true;
 	}
 	if(this.collision){
 		this.character.jumped = false;
 	}
-	if(this.character.y + this.character.size > this.canvas.height)	{
+	if(this.character.y > this.canvas.height)	{
 		this.character.y = 400;
 		this.character.x = 0;
 	}
