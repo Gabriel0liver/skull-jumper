@@ -7,6 +7,7 @@ function buildDom(html) {
 }
 
 var buildWinGame;
+var gameIsOver = false;
 
 function main(){
 
@@ -15,6 +16,8 @@ function main(){
     var winDom;
     var buttonStartListner;
     var buttonRestartListner;
+    var buttonStart;
+    var buttonReset;
 
     function buildSplash(){
 
@@ -27,15 +30,15 @@ function main(){
 
         document.body.appendChild(splashDom);
 
-        var button = splashDom.querySelector('button');
-        buttonStartListner = button.addEventListener('click', buildGameScreen);
+        buttonStart = splashDom.querySelector('button');
+        buttonStartListner = buttonStart.addEventListener('click', buildGameScreen);
 
-        //buildGameScreen();
+        buildGameScreen();
     }
 
     function destroySplash(){
         splashDom.remove();
-        button.removeEventListner(buttonStartListner);
+        buttonStart.removeEventListener("click",buttonStartListner);
     }
 
     function buildGameScreen(){
@@ -58,7 +61,9 @@ function main(){
     }
 
     function destroyGameScreen(){
+        gameIsOver = true;
         gameDom.remove();
+        
     }
 
     buildWinGame = function(){
@@ -73,15 +78,15 @@ function main(){
 
         document.body.appendChild(winDom);
 
-        var button = winDom.querySelector('button');
-        buttonRestartListner = button.addEventListener('click', buildGameScreen);
+        buttonReset = winDom.querySelector('button');
+        buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);
         
     }
 
     function destroyWinGame(){
         if(winDom){
             winDom.remove();
-            button.removeEventListner(buttonRestartListner);
+            buttonReset.removeEventListener("click",buttonRestartListner);
         }
     }
 
