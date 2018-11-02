@@ -2,11 +2,12 @@ function Character(){
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
     this.x = 0;
-    this.y = 0;
+    this.y = 400;
     this.xSpeed = 0;
     this.ySpeed = 0;
     this.size = 50;
-    this.gravity = 0.3;
+    this.gravity = 0.5;
+    this.jumped = true;
 
 }
 
