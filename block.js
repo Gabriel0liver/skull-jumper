@@ -23,5 +23,9 @@ Game.prototype.createBlocks = function(){
 	this.block3 = new Block();
 	this.block3.x = 800;
 	this.block3.y = 400;
-	this.block3.size = 200;
+    this.block3.size = 200;
+    this.block4 = new Block();
+    this.block4.x = 400;
+    this.block4.y = 250;
+    this.block4.size = 75;
 }

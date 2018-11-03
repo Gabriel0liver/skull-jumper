@@ -11,10 +11,45 @@ function Character(){
     this.rightIsDown = false;
     this.leftIsDown = false;
     this.rightLeftDown = false;
-    this.animation = new Animation();
-
+    this.walkingRight = true;
+    this.createAnimations()
 }
 
 Character.prototype.render = function(game){
-    this.animation.render(game)
+    if(!game.collision && this.walkingRight){
+        this.jumpAnimationRight.render(game);
+    }else if(!game.collision && !this.walkingRight){
+        this.jumpAnimationLeft.render(game);
+    }else if(this.xSpeed > 0){
+        this.walkingAnimationRight.render(game);
+        this.walkingRight = true; 
+    }else if (this.xSpeed < 0){
+        this.walkingAnimationLeft.render(game);
+        this.walkingRight = false;
+    }else if (this.walkingRight === true){
+        this.idleAnimationRight.render(game);
+    }else if (this.walkingRight === false){
+        this.idleAnimationLeft.render(game);
+    }
+}
+
+Character.prototype.createAnimations = function(){
+    this.walkingAnimationRight = new Animation();
+    this.walkingAnimationRight.spriteSheet.src = "./images/walkingRight.png";
+    this.walkingAnimationRight.amountOfFrames = 4;
+    this.walkingAnimationLeft = new Animation();
+    this.walkingAnimationLeft.spriteSheet.src = "./images/walkingLeft.png";
+    this.walkingAnimationLeft.amountOfFrames = 4;
+    this.idleAnimationRight = new Animation();
+    this.idleAnimationRight .spriteSheet.src = "./images/idleRight.png";
+    this.idleAnimationRight .amountOfFrames = 1;
+    this.idleAnimationLeft = new Animation();
+    this.idleAnimationLeft .spriteSheet.src = "./images/idleLeft.png";
+    this.idleAnimationLeft .amountOfFrames = 1;
+    this.jumpAnimationRight = new Animation();
+    this.jumpAnimationRight.spriteSheet.src = "./images/jumpRight.png";
+    this.jumpAnimationRight.amountOfFrames = 1;
+    this.jumpAnimationLeft = new Animation();
+    this.jumpAnimationLeft.spriteSheet.src = "./images/jumpLeft.png";
+    this.jumpAnimationLeft.amountOfFrames = 1;
 }

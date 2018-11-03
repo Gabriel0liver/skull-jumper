@@ -52,9 +52,9 @@ Game.prototype.movement = function(){
   }else if(this.character.rightLeftDown){
     this.character.xSpeed = 0;
   }else if(this.character.rightIsDown){
-    this.character.xSpeed = 4;
+    this.character.xSpeed = 6;
   }else if(this.character.leftIsDown){
-    this.character.xSpeed = -4;
+    this.character.xSpeed = -6;
   }else{
     this.character.xSpeed = 0;
   }
@@ -63,7 +63,7 @@ Game.prototype.movement = function(){
 Game.prototype.jump = function(){
   if(!this.character.jumped){
     this.character.y += -10;
-    this.time = -35;
+    this.time = -30;
     this.character.jumped = true;
   }
   

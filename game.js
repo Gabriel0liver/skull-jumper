@@ -1,8 +1,6 @@
 "use strict";
 
 function Game(){
-
-
 	this.collision = false;
 	this.time = 0;
 }
@@ -17,12 +15,17 @@ Game.prototype.start = function () {
 
 	gameIsOver = false;
 
+	this.createBlocks();
+
+	
+
 	this.character = new Character();
+	this.levels = new Levels(this);
 	
 	this.startLoop();
 
-	this.createBlocks();
-	this.blocks = [this.block1,this.block2,this.block3];
+	
+	//this.blocks = [this.block1,this.block2,this.block3];
 
 	document.body.addEventListener('keydown', this.handleKeyDown.bind(this));
 	document.body.addEventListener('keyup', this.handleKeyUp.bind(this));
@@ -30,8 +33,9 @@ Game.prototype.start = function () {
 
 Game.prototype.startLoop = function(){
 	function loop(){
-		this.update();
 		this.renderAll();
+		this.update();
+		
 		if(!gameIsOver){
 		window.requestAnimationFrame(loop.bind(this));
 		}
@@ -50,14 +54,12 @@ Game.prototype.renderAll = function () {
 	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	this.ctx.fillStyle = "#161616";
 	this.character.render(this);
-	this.blocks.forEach(function(block){
-		block.render();
-	})
+	this.levels.renderLevel();
 }
 
 Game.prototype.checkCollisions = function(){
 	var collisions = 0;
-	this.blocks.forEach(function(block){
+	this.levels.currentLevel.forEach(function(block){
 		var collidesRight = this.character.x + this.character.size > block.x;
 		var collidesLeft = this.character.x< block.x + block.size;
 		var collidesTop = this.character.y - this.character.size < block.y;
@@ -76,6 +78,8 @@ Game.prototype.checkCollisions = function(){
 
 	if(collisions === 0){
 		this.character.jumped = true;
+	}else{
+		this.collision = true;
 	}
 
 	if(!this.collision){
@@ -91,7 +95,7 @@ Game.prototype.checkCollisions = function(){
 		this.character.x = 0;
 	}
 	if(this.character.x + this.character.size > this.canvas.width){
-		buildWinGame();
+		this.character.x = this.levels.nextLevel();
 	}
 	
 }
