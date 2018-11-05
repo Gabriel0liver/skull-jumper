@@ -8,8 +8,13 @@ body{
     background-color: #F2F2F2
 }
 
+div{
+    margin-top:75px;
+    text-align: center;
+}
+
 .win, .splash{
-    margin-top: 25%;
+    margin-top: 200px;
     text-align: center;
 }
 

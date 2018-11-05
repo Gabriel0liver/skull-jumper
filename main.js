@@ -32,7 +32,7 @@ function main(){
         buttonStart = splashDom.querySelector('button');
         buttonStartListner = buttonStart.addEventListener('click', buildGameScreen);
 
-        buildGameScreen();
+        //buildGameScreen();
     }
 
     function destroySplash(){

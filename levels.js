@@ -9,7 +9,7 @@ function Levels (game){
   this.levelArray = [this.level1,this.level2,this.level3,this.level4,this.level5];
   this.enemiesArray = [[],[],[],this.enemies4,this.enemies5]
   this.currentEnemies = [];
-  this.currentLevelIndex = 3;
+  this.currentLevelIndex = 0;
   this.characterX;
   this.characterY;
 }
