@@ -51,9 +51,9 @@ Game.prototype.movement = function(){
     this.character.xSpeed = 0;
   }else if(this.character.rightLeftDown){
     this.character.xSpeed = 0;
-  }else if(this.character.rightIsDown && !this.character.collisionRight){
+  }else if(this.character.rightIsDown && !this.character.collisionRight &&!this.character.dying){
     this.character.xSpeed = 7;
-  }else if(this.character.leftIsDown && !this.character.collisionLeft){
+  }else if(this.character.leftIsDown && !this.character.collisionLeft &&!this.character.dying){
     this.character.xSpeed = -7;
   }else{
     this.character.xSpeed = 0;
@@ -61,7 +61,7 @@ Game.prototype.movement = function(){
 }
 
 Game.prototype.jump = function(){
-  if(!this.character.jumped){
+  if(!this.character.jumped && !this.character.dying){
     this.character.y += -10;
     this.time = -30;
     this.character.jumped = true;

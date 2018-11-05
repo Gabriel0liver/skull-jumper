@@ -5,6 +5,7 @@ function Game(){
 	this.time = 0;
 }
 
+var time = 0;
 
 Game.prototype.start = function () {
 	this.canvas = document.querySelector("canvas");
@@ -14,12 +15,14 @@ Game.prototype.start = function () {
 	this.canvas.height = 540;
 
 	this.createBlocks();
+	this.createEnemies();
 
 	this.character = new Character();
 	this.levels = new Levels(this);
-	this.enemy1 = new Enemy;
+	
+	//myAudio.play();
 
-	this.enemies = [this.enemy1]
+	//this.enemies = [this.enemy1,this.enemy2]
 
 	this.levels.gameIsOver = false;
 
@@ -35,6 +38,8 @@ Game.prototype.startLoop = function(){
 	function loop(){
 		this.renderAll();
 		this.update();
+		time ++;
+		console.log(Math.floor(time/60))
 		if(!this.levels.gameIsOver){
 		window.requestAnimationFrame(loop.bind(this));
 		}
@@ -45,6 +50,7 @@ Game.prototype.startLoop = function(){
 Game.prototype.update = function(){
 	this.movement();
 	this.enemy1.move();
+	this.enemy2.move();
 	this.character.x += this.character.xSpeed;
 	this.checkCollisions();
 }
@@ -54,7 +60,12 @@ Game.prototype.renderAll = function () {
 	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	this.ctx.fillStyle = "#161616";
 	this.levels.renderLevel();
-	this.enemy1.render(this);
+	this.levels.renderEnemies(this);
 	this.character.render(this);
 	
 }
+
+	var myAudio = document.createElement("audio");
+	myAudio.src = ("./sounds/music.mp3");
+	
+

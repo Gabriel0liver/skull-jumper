@@ -6,7 +6,7 @@ function buildDom(html) {
   return div.children[0];
 }
 
-var inAir = true;
+var somin
 
 function main(){
 

@@ -19,8 +19,10 @@ Game.prototype.checkCollisions = function(){
       }else if(this.character.x + this.character.size -5 >= block.x && this.character.x + this.character.size <= block.x + 10){
 				this.character.collisionRight = true;
       }else if(this.character.x +5 <= block.x + block.size && this.character.x >= block.x + block.size -10){
-				console.log("collided with "+ block)
 				this.character.collisionLeft = true;
+			}else if(this.character.y <= block.y + block.size && this.character.y >= block.y + block.size -15){
+				this.ySpeed = 0;
+				this.time = 0;
 			}
 			collisions++;
 		}else{
@@ -28,15 +30,14 @@ Game.prototype.checkCollisions = function(){
 		}
 	}.bind(this))
 
-	this.enemies.forEach(function(enemy){
-		var collidesRight = this.character.x + this.character.size >= enemy.x;
-		var collidesLeft = this.character.x <= enemy.x + 52;
-		var collidesTop = this.character.y <= enemy.y + 52;
-    var collidesBottom = this.character.y + this.character.size >= enemy.y;
+	this.levels.currentEnemies.forEach(function(enemy){
+		var collidesRight = this.character.x + this.character.size >= enemy.x + 20;
+		var collidesLeft = this.character.x <= enemy.x + 42;
+		var collidesTop = this.character.y <= enemy.y + 45;
+    var collidesBottom = this.character.y + this.character.size >= enemy.y ;
     
-		if (collidesBottom && collidesLeft && collidesRight && collidesTop) {
-			this.character.y = 300;
-			this.character.x = 0;
+		if (collidesBottom && collidesLeft && collidesRight && collidesTop && !this.character.dying) {
+			this.character.dying = true;
 		}
 	}.bind(this))
 	
