@@ -1,8 +1,8 @@
 function Character(){
     this.canvas = document.querySelector("canvas");
     this.ctx = this.canvas.getContext("2d");
-    this.x = 0;
-    this.y = 400;
+    this.x = 10;
+    this.y = 0;
     this.xSpeed = 0;
     this.ySpeed = 0;
     this.size = 50;
@@ -13,23 +13,31 @@ function Character(){
     this.rightLeftDown = false;
     this.walkingRight = true;
     this.createAnimations()
+    this.collisionRight = false;
+    this.collisionLeft = false;
+    this.collisionBottom = false;
 }
 
 Character.prototype.render = function(game){
-    if(!game.collision && this.walkingRight){
-        this.jumpAnimationRight.render(game);
-    }else if(!game.collision && !this.walkingRight){
-        this.jumpAnimationLeft.render(game);
+    if(this.xSpeed > 0){
+        this.walkingRight = true;
+    }else if(this.xSpeed < 0){
+        this.walkingRight = false;
+    }
+    if(this.jumped && this.walkingRight){
+        this.jumpAnimationRight.renderChar(game);
+    }else if(this.jumped && !this.walkingRight){
+        this.jumpAnimationLeft.renderChar(game);
     }else if(this.xSpeed > 0){
-        this.walkingAnimationRight.render(game);
-        this.walkingRight = true; 
+        this.walkingAnimationRight.renderChar(game);
+         
     }else if (this.xSpeed < 0){
-        this.walkingAnimationLeft.render(game);
+        this.walkingAnimationLeft.renderChar(game);
         this.walkingRight = false;
     }else if (this.walkingRight === true){
-        this.idleAnimationRight.render(game);
+        this.idleAnimationRight.renderChar(game);
     }else if (this.walkingRight === false){
-        this.idleAnimationLeft.render(game);
+        this.idleAnimationLeft.renderChar(game);
     }
 }
 

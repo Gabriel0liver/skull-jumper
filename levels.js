@@ -17,7 +17,16 @@ Levels.prototype.renderLevel = function(){
 Levels.prototype.nextLevel = function(){
   this.currentLevelIndex ++;
   if(this.currentLevelIndex > this.levelArray.length-1){
-    buildWinGame();
+    this.gameIsOver = true;
+    this.finishGame();
   }
   return 0;
+}
+
+Levels.prototype.finishGame = function() {
+  this.gameOverCallback();
+}
+
+Levels.prototype.onGameOverCallback = function(callback) {
+  this.gameOverCallback = callback;
 }

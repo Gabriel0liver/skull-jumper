@@ -6,8 +6,7 @@ function buildDom(html) {
   return div.children[0];
 }
 
-var buildWinGame;
-var gameIsOver = false;
+var inAir = true;
 
 function main(){
 
@@ -33,7 +32,7 @@ function main(){
         buttonStart = splashDom.querySelector('button');
         buttonStartListner = buttonStart.addEventListener('click', buildGameScreen);
 
-        //buildGameScreen();
+        buildGameScreen();
     }
 
     function destroySplash(){
@@ -57,16 +56,16 @@ function main(){
 
         var game = new Game();
         game.start();
+        game.levels.onGameOverCallback(buildWinGame);
 
     }
 
     function destroyGameScreen(){
-        gameIsOver = true;
         gameDom.remove();
         
     }
 
-    buildWinGame = function(){
+    function buildWinGame(){
         destroyGameScreen();
         
         winDom = buildDom(`

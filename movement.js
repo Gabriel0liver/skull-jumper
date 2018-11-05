@@ -51,10 +51,10 @@ Game.prototype.movement = function(){
     this.character.xSpeed = 0;
   }else if(this.character.rightLeftDown){
     this.character.xSpeed = 0;
-  }else if(this.character.rightIsDown){
-    this.character.xSpeed = 6;
-  }else if(this.character.leftIsDown){
-    this.character.xSpeed = -6;
+  }else if(this.character.rightIsDown && !this.character.collisionRight){
+    this.character.xSpeed = 7;
+  }else if(this.character.leftIsDown && !this.character.collisionLeft){
+    this.character.xSpeed = -7;
   }else{
     this.character.xSpeed = 0;
   }

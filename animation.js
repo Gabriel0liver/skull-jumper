@@ -24,7 +24,7 @@ Animation.prototype.frameIndexCounter = function(){
   }
 }
 
-Animation.prototype.render = function(game){
+Animation.prototype.renderChar = function(game){
   this.frameIndexCounter();
   this.ctx.drawImage(
     this.spriteSheet,
@@ -34,6 +34,21 @@ Animation.prototype.render = function(game){
     200,
     game.character.x,
     game.character.y,
+    52,
+    52
+  )
+}
+
+Animation.prototype.renderEnemy = function(game){
+  this.frameIndexCounter();
+  this.ctx.drawImage(
+    this.spriteSheet,
+    this.frameIndex * 200,
+    0,
+    200,
+    200,
+    game.enemy1.x,
+    game.enemy1.y,
     52,
     52
   )
