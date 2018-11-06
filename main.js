@@ -21,7 +21,7 @@ function main(){
         splashDom = buildDom(`
             <main class="splash">
                 <h1>SKULL JUMPER</h1>
-                <button>Start</button>
+                <button class="hvr-grow">Start</button>
             </main>
         `);
 
@@ -71,13 +71,13 @@ function main(){
             <main class="win">
                 <h1>YOU WIN!</h1>
                 <section></section>
-                <button>Restart</button>
+                <button class="hvr-grow">Restart</button>
             </main>
         `);
 
         document.body.appendChild(winDom);
 
-        document.querySelector("section").innerText = "Your time  "+time;
+        document.querySelector("section").innerText = "Your time:  "+time;
 
         buttonReset = winDom.querySelector('button');
         buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);

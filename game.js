@@ -22,7 +22,12 @@ Game.prototype.start = function () {
 	this.totalTime = 0;
 	this.convertedTime;
 
-	//myAudio.play();
+	music.play();
+	music.volume = 0.07;
+	hitGroundSound.volume= 0.1;
+	jumpSound.volume = 0.1;
+	deathSound.volume = 0.1;
+	music.loop = true;
 
 	//this.enemies = [this.enemy1,this.enemy2]
 
@@ -71,8 +76,17 @@ Game.prototype.renderAll = function () {
 	
 }
 
-	var myAudio = document.createElement("audio");
-	myAudio.src = ("./sounds/music.mp3");
+	var music = document.createElement("audio");
+	var jumpSound = document.createElement("audio");
+	var hitGroundSound = document.createElement("audio");
+	var clickSound = document.createElement("audio");
+	var deathSound = document.createElement("audio");
+	music.src = ("./sounds/music.mp3");
+	jumpSound.src = ("./sounds/jump.mp3");
+	hitGroundSound.src = ("./sounds/hitGround.mp3");
+	clickSound.src = ("./sounds/click.mp3");
+	deathSound.src = ("./sounds/death.mp3");
+
 	
 
 Game.prototype.convertTime = function(time){

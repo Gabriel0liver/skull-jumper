@@ -11,6 +11,9 @@ Game.prototype.checkCollisions = function(){
 		if (collidesBottom && collidesLeft && collidesRight && collidesTop) {
       //this.character.jumped = false;
       if(this.character.collisionBottom && this.character.ySpeed >= 0){
+				if(this.character.jumped){
+					hitGroundSound.play();
+				}
 				this.character.jumped = false;
         this.character.y = block.y - this.character.size;
         this.time = 0
@@ -54,6 +57,7 @@ Game.prototype.checkCollisions = function(){
 		this.character.y += this.character.ySpeed;
 	}
 	if(this.character.y > this.canvas.height)	{
+		deathSound.play();
 		this.character.y = 300;
 		this.character.x = 0;
 	}

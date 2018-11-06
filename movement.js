@@ -62,6 +62,7 @@ Game.prototype.movement = function(){
 
 Game.prototype.jump = function(){
   if(!this.character.jumped && !this.character.dying){
+    jumpSound.play();
     this.character.y += -10;
     this.time = -30;
     this.character.jumped = true;
