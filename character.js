@@ -30,7 +30,7 @@ Character.prototype.render = function(game){
             this.dead=false;
             this.y = 300;
             this.x = 0;
-        }.bind(this),1000)}
+        }.bind(this),800)}
         this.dead = true;
     }else{
         if(this.xSpeed > 0){

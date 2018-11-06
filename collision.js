@@ -58,7 +58,7 @@ Game.prototype.checkCollisions = function(){
 		this.character.x = 0;
 	}
 	if(this.character.x + this.character.size > this.canvas.width){
-		this.character.x = this.levels.nextLevel();
+		this.character.x = this.levels.nextLevel(this);
 	}
 	
 }

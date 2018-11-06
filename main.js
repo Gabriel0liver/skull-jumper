@@ -6,8 +6,6 @@ function buildDom(html) {
   return div.children[0];
 }
 
-var somin
-
 function main(){
 
     var splashDom;
@@ -47,6 +45,7 @@ function main(){
         gameDom = buildDom(`
             <main class="game container">
                 <div class="canvas">
+                <p></p>
                     <canvas></canvas>
                 </div>
             </main>
@@ -65,17 +64,20 @@ function main(){
         
     }
 
-    function buildWinGame(){
+    function buildWinGame(time){
         destroyGameScreen();
         
         winDom = buildDom(`
             <main class="win">
                 <h1>YOU WIN!</h1>
+                <section></section>
                 <button>Restart</button>
             </main>
         `);
 
         document.body.appendChild(winDom);
+
+        document.querySelector("section").innerText = "Your time  "+time;
 
         buttonReset = winDom.querySelector('button');
         buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);

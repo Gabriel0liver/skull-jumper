@@ -4,10 +4,16 @@ function Levels (game){
   this.level3 = [game.block3,game.block4,game.block6,game.block7];
   this.level4 = [game.block3,game.block4,game.block8]; 
   this.enemies4 = [game.enemy1];
-  this.level5 = [game.block9,game.block10,game.block4]
-  this.enemies5 = [game.enemy2];
-  this.levelArray = [this.level1,this.level2,this.level3,this.level4,this.level5];
-  this.enemiesArray = [[],[],[],this.enemies4,this.enemies5]
+  this.level5 = [game.block11,game.block12,game.block13,game.block14];
+  this.enemies5 = [game.enemy3,game.enemy4,game.enemy5];
+  this.level6 = [game.block9,game.block10,game.block4];
+  this.enemies6 = [game.enemy2];
+  this.level7 = []
+  this.level8 = []
+  this.level9 = []
+  this.level10 = []
+  this.levelArray = [this.level1,this.level2,this.level3,this.level4,this.level5,this.level6];
+  this.enemiesArray = [[],[],[],this.enemies4,this.enemies5,this.enemies6]
   this.currentEnemies = [];
   this.currentLevelIndex = 0;
   this.characterX;
@@ -28,17 +34,18 @@ Levels.prototype.renderEnemies = function(game){
   })
 }
 
-Levels.prototype.nextLevel = function(){
+Levels.prototype.nextLevel = function(game){
   this.currentLevelIndex ++;
   if(this.currentLevelIndex > this.levelArray.length-1){
     this.gameIsOver = true;
-    this.finishGame();
+    this.finishGame(game);
   }
   return 0;
 }
 
-Levels.prototype.finishGame = function() {
-  this.gameOverCallback();
+Levels.prototype.finishGame = function(game) {
+  this.gameOverCallback(game.convertedTime);
+  game.totalTime=0;
 }
 
 Levels.prototype.onGameOverCallback = function(callback) {

@@ -1,7 +1,13 @@
 @import url('https://fonts.googleapis.com/css?family=Oswald');
+@import url('https://fonts.googleapis.com/css?family=Press+Start+2P');
+
+*{
+    margin:0;
+}
 
 canvas{
-    border: solid 2px black;
+    border: solid 3px black;
+    border-radius: 3px;
 }
 
 body{
@@ -18,20 +24,27 @@ div{
     text-align: center;
 }
 
+p,section{
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 50px;
+    
+}
+
 h1{
-    font-family: "Oswlald", sans-serif;
+    font-family: 'Press Start 2P', cursive;
     font-weight: bold;
     font-size: 3em;
 }
 
 button{
-    font-family: "Oswlald", sans-serif;
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 50px;
     font-weight: bold;
     font-size: 2em;
     color:white;
     background-color: black;
     border: 0;
     border-radius: 10px;
-    width: 200px;
-    height: 75px;
+    width: 250px;
+    height: 100px;
 }

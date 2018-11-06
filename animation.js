@@ -4,7 +4,7 @@ function Animation(){
   this.spriteSheet = new Image();
   this.spriteSheet.src = "./images/walking.png";
   this.frameIndex = 0;
-  this.frameSpeed = 7;
+  this.frameSpeed = 6;
   this.speedCounter = 0;
   this.amountOfFrames;
 }
