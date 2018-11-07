@@ -59,9 +59,9 @@ Game.prototype.checkCollisions = function(){
 					hitGroundSound.play();
 				}
 				if(block.movingRight){
-					this.character.x ++;
+					this.character.x += 2;
 				}else{
-					this.character.x --;
+					this.character.x -= 2;
 				}
 				this.character.jumped = false;
         this.character.y = block.y - this.character.size;
@@ -101,6 +101,7 @@ Game.prototype.checkCollisions = function(){
 	}
 	if(this.character.x + this.character.size > this.canvas.width){
 		this.character.x = this.levels.nextLevel(this);
+		this.character.y = 300;
 	}
 	
 }

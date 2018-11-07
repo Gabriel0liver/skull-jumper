@@ -21,6 +21,10 @@ Game.prototype.handleKeyDown = function(event){
     this.jump()
   }
 
+  if (!isNaN(parseFloat(event.key)) && isFinite(event.key)){
+    this.levels.currentLevelIndex=parseFloat(event.key)
+  }
+
 }
 
 Game.prototype.handleKeyUp = function(event){

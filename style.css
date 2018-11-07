@@ -3,19 +3,21 @@
 
 *{
     margin:0;
+    font-family: 'Press Start 2P', cursive;
 }
 
 canvas{
     border: solid 3px black;
     border-radius: 3px;
+    max-width: 100%;
 }
 
 body{
     background-color: #F2F2F2
 }
 
-div{
-    margin-top:75px;
+.canvas{
+    margin-top:55px;
     text-align: center;
 }
 
@@ -63,4 +65,11 @@ button{
   .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
     -webkit-transform: scale(1.1);
     transform: scale(1.1);
+  }
+
+  .header{
+      margin-left: 20%;
+      margin-right: 20%;
+      display: flex;
+      justify-content: space-between;
   }

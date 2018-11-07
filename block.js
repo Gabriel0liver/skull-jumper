@@ -8,7 +8,8 @@ function Block(){
 }
 
 Block.prototype.render = function(){
-    this.ctx.fillRect(this.x, this.y, this.size, this.size);
+    //this.ctx.fillRect(this.x, this.y, this.size, this.size);
+    roundRect(this.ctx,this.x,this.y,this.size,this.size,4,true,false)
 }
 
 Game.prototype.createBlocks = function(){
@@ -76,5 +77,46 @@ Game.prototype.createBlocks = function(){
 	this.block16.x = 800;
 	this.block16.y = 225;
     this.block16.size = 700;
-    
+    this.block17 = new Block();
+    this.block17.x = 200;
+    this.block17.y = 150;
+    this.block17.size = 50;
+    this.block18 = new Block();
+    this.block18.x = 850;
+    this.block18.y = 400;
+    this.block18.size = 200;
+    this.block19 = new Block();
+	this.block19.x = 0;
+	this.block19.y = 440;
+    this.block19.size = 300;
+    this.block20 = new Block();
+	this.block20.x = 100;
+	this.block20.y = 240;
+    this.block20.size = 200;
 }
+
+function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
+    if (typeof stroke == "undefined" ) {
+      stroke = true;
+    }
+    if (typeof radius === "undefined") {
+      radius = 5;
+    }
+    ctx.beginPath();
+    ctx.moveTo(x + radius, y);
+    ctx.lineTo(x + width - radius, y);
+    ctx.quadraticCurveTo(x + width, y, x + width, y + radius);
+    ctx.lineTo(x + width, y + height - radius);
+    ctx.quadraticCurveTo(x + width, y + height, x + width - radius, y + height);
+    ctx.lineTo(x + radius, y + height);
+    ctx.quadraticCurveTo(x, y + height, x, y + height - radius);
+    ctx.lineTo(x, y + radius);
+    ctx.quadraticCurveTo(x, y, x + radius, y);
+    ctx.closePath();
+    if (stroke) {
+      ctx.stroke();
+    }
+    if (fill) {
+      ctx.fill();
+    }        
+  }

@@ -13,6 +13,7 @@ function main(){
     var winDom;
     var buttonStartListner;
     var buttonRestartListner;
+    var buttonHoverListner;
     var buttonStart;
     var buttonReset;
 
@@ -50,7 +51,12 @@ function main(){
         gameDom = buildDom(`
             <main class="game container">
                 <div class="canvas">
-                <p></p>
+                    <div class="header">
+                        <p></p>
+                        <section>
+                        Level
+                        </section>
+                    </div>
                     <canvas></canvas>
                 </div>
             </main>
@@ -61,6 +67,7 @@ function main(){
         var game = new Game();
         game.start();
         game.levels.onGameOverCallback(buildWinGame);
+
 
     }
 
@@ -76,6 +83,13 @@ function main(){
             <main class="win">
                 <h1>YOU WIN!</h1>
                 <section></section>
+                <form>
+                    Name:
+                    <input type="text" name="name">
+                </form>
+                <div>
+                    <h4>High scores:</h4>
+                </div>
                 <button class="hvr-grow">Restart</button>
             </main>
         `);
@@ -87,6 +101,7 @@ function main(){
         buttonReset = winDom.querySelector('button');
         buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);
         buttonHoverListner = buttonReset.addEventListener("mouseover",makeClickSound);
+
         
     }
 

@@ -95,5 +95,15 @@ Game.prototype.createEnemies = function(){
   this.enemy11.x = 675;
   this.enemy11.y = 402 ;
   this.enemy11.pathWaypoint1 = 650;
-  this.enemy11.pathWaypoint2 = 700;
+  this.enemy11.pathWaypoint2 = 750;
+  this.enemy12 = new Enemy;
+  this.enemy12.x = 125;
+  this.enemy12.y = 192;
+  this.enemy12.pathWaypoint1 = 100;
+  this.enemy12.pathWaypoint2 = 150;
+  this.enemy13 = new Enemy;
+  this.enemy13.x = 200;
+  this.enemy13.y = 192;
+  this.enemy13.pathWaypoint1 = 200;
+  this.enemy13.pathWaypoint2 = 250;
 }

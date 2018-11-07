@@ -1,4 +1,4 @@
-function movingBlock(){
+function MovingBlock(){
   this.x;
   this.y;
   this.size;
@@ -15,13 +15,13 @@ Block.prototype.moveBlock = function(){
     this.movingRight = false;
   }
   if(this.movingRight){
-    this.x += 1;
+    this.x += 2;
   }else{
-    this.x -= 1;
+    this.x -= 2;
   }
 }
 
-Block.prototype.render = function(){
+MovingBlock.prototype.render = function(){
   this.ctx.fillRect(this.x, this.y, this.size, this.size);
 }
 
@@ -32,4 +32,17 @@ Game.prototype.createMovingBlocks = function(){
   this.movingBlock1.waypoint1 = 400;
   this.movingBlock1.waypoint2 = 600;
   this.movingBlock1.size = 50;
+  this.movingBlock2 = new Block();
+  this.movingBlock2.x = 700;
+  this.movingBlock2.y = 400;
+  this.movingBlock2.waypoint1 = 600;
+  this.movingBlock2.waypoint2 = 800;
+  this.movingBlock2.size = 37;
+  this.movingBlock3 = new Block();
+  this.movingBlock3.x = 700;
+  this.movingBlock3.y = 400;
+  this.movingBlock3.waypoint1 = 600;
+  this.movingBlock3.waypoint2 = 800;
+  this.movingBlock3.size = 25;
+  
 }

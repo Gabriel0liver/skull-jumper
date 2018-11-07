@@ -12,11 +12,14 @@ function Levels (game){
   this.enemies7 = [game.enemy6,game.enemy7,game.enemy8,game.enemy9,game.enemy10,game.enemy11];
   this.level8 = [game.block3,game.block4];
   this.movingBlocks8 = [game.movingBlock1];
-  this.level9 = []
-  this.level10 = []
-  this.levelArray = [this.level1,this.level2,this.level3,this.level4,this.level5,this.level6,this.level7,this.level8];
-  this.enemiesArray = [[],[],[],this.enemies4,this.enemies5,this.enemies6,this.enemies7,[]]
-  this.movingBlocksArray = [[],[],[],[],[],[],[],this.movingBlocks8];
+  this.level9 = [game.block3,game.block6,game.block17,game.block18];
+  this.movingBlocks9 = [game.movingBlock2]
+  this.level10 = [game.block19,game.block20,game.block18]
+  this.enemies10 = [game.enemy12,game.enemy13]
+  this.movingBlocks10 = [game.movingBlock3]
+  this.levelArray = [this.level1,this.level2,this.level3,this.level4,this.level5,this.level6,this.level7,this.level8,this.level9,this.level10];
+  this.enemiesArray = [[],[],[],this.enemies4,this.enemies5,this.enemies6,this.enemies7,[],[],this.enemies10]
+  this.movingBlocksArray = [[],[],[],[],[],[],[],this.movingBlocks8,this.movingBlocks9,this.movingBlocks10];
   this.currentEnemies = [];
   this.currentMovingBlocks = [];
   this.currentLevelIndex = 0;
@@ -27,7 +30,6 @@ function Levels (game){
 Levels.prototype.renderLevel = function(){
   this.currentLevel = this.levelArray[this.currentLevelIndex]
   this.currentLevel.forEach(function(block){
-    
     block.render();
   });
 }
@@ -52,8 +54,10 @@ Levels.prototype.moveEnemies = function(){
   })
 }
 
-Levels.prototype.moveBlocks = function(game){
-
+Levels.prototype.moveBlocks = function(){
+  this.currentMovingBlocks.forEach(function(movingBlock){
+    movingBlock.moveBlock();
+  })
 }
 
 Levels.prototype.nextLevel = function(game){

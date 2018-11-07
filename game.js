@@ -10,6 +10,9 @@ Game.prototype.start = function () {
 	this.canvas = document.querySelector("canvas");
 	this.ctx = this.canvas.getContext("2d");
 
+	this.backGround = new Image();
+	this.backGround.src = "./images/cloudBackground.png"
+
 	this.canvas.width = 960;
 	this.canvas.height = 540;
 
@@ -26,7 +29,7 @@ Game.prototype.start = function () {
 	music.play();
 	music.volume = 0.07;
 	hitGroundSound.volume= 0.1;
-	jumpSound.volume = 0.1;
+	jumpSound.volume = 0.05;
 	deathSound.volume = 0.1;
 	music.loop = true;
 
@@ -51,7 +54,10 @@ Game.prototype.startLoop = function(){
 		if(!this.levels.gameIsOver){
 		window.requestAnimationFrame(loop.bind(this));
 		}
-		document.querySelector("p").innerHTML = this.convertedTime;
+		document.querySelector("p").innerHTML = "TIME "+this.convertedTime;
+		document.querySelector("section").innerHTML = "LEVEL "+(this.levels.currentLevelIndex+1);
+		//this.levels.gameIsOver = true;
+		//this.levels.finishGame(this)
 	}
 	window.requestAnimationFrame(loop.bind(this));
 }
@@ -59,20 +65,22 @@ Game.prototype.startLoop = function(){
 Game.prototype.update = function(){
 	this.movement();
 	this.levels.moveEnemies(this);
-	this.movingBlock1.moveBlock();
+	this.levels.moveBlocks();
 	this.character.x += this.character.xSpeed;
 	this.checkCollisions();
 }
 
 Game.prototype.renderAll = function () {
 	this.ctx.fillStyle = "#DEE5E5";
-	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
-	this.ctx.fillStyle = "#161616";
-	
+	this.ctx.drawImage(this.backGround,0, 0,);
+	this.ctx.fillStyle = "#504F59";
 	this.levels.renderLevel();
 	this.levels.renderMovingBlocks();
 	this.levels.renderEnemies(this);
 	this.character.render(this);
+	this.ctx.strokeStyle = "#504F59";
+	this.ctx.fillStyle = "#504F59";
+	
 	
 }
 
