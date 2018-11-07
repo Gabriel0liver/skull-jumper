@@ -17,7 +17,7 @@ Enemy.prototype.createAnimations = function(){
   this.enemyAnimationRight.amountOfFrames = 4;
 }
 
-Enemy.prototype.render = function(game){
+Enemy.prototype.render = function(){
   if(this.movingLeft){
     this.enemyAnimationLeft.renderEnemy(this);
   }else{
@@ -66,4 +66,34 @@ Game.prototype.createEnemies = function(){
   this.enemy5.y = 252 ;
   this.enemy5.pathWaypoint1 = 620;
   this.enemy5.pathWaypoint2 = 920;
+  this.enemy6 = new Enemy;
+  this.enemy6.x = 175;
+  this.enemy6.y = 402 ;
+  this.enemy6.pathWaypoint1 = 150;
+  this.enemy6.pathWaypoint2 = 200;
+  this.enemy7 = new Enemy;
+  this.enemy7.x = 250;
+  this.enemy7.y = 402 ;
+  this.enemy7.pathWaypoint1 = 250;
+  this.enemy7.pathWaypoint2 = 300;
+  this.enemy8 = new Enemy;
+  this.enemy8.x = 375;
+  this.enemy8.y = 402 ;
+  this.enemy8.pathWaypoint1 = 350;
+  this.enemy8.pathWaypoint2 = 400;
+  this.enemy9 = new Enemy;
+  this.enemy9.x = 500;
+  this.enemy9.y = 402 ;
+  this.enemy9.pathWaypoint1 = 450;
+  this.enemy9.pathWaypoint2 = 500;
+  this.enemy10 = new Enemy;
+  this.enemy10.x = 550;
+  this.enemy10.y = 402 ;
+  this.enemy10.pathWaypoint1 = 550;
+  this.enemy10.pathWaypoint2 = 600;
+  this.enemy11 = new Enemy;
+  this.enemy11.x = 675;
+  this.enemy11.y = 402 ;
+  this.enemy11.pathWaypoint1 = 650;
+  this.enemy11.pathWaypoint2 = 700;
 }

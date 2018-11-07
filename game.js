@@ -14,6 +14,7 @@ Game.prototype.start = function () {
 	this.canvas.height = 540;
 
 	this.createBlocks();
+	this.createMovingBlocks();
 	this.createEnemies();
 
 	this.character = new Character();
@@ -57,11 +58,8 @@ Game.prototype.startLoop = function(){
 
 Game.prototype.update = function(){
 	this.movement();
-	this.enemy1.move();
-	this.enemy2.move();
-	this.enemy3.move();
-	this.enemy4.move();
-	this.enemy5.move();
+	this.levels.moveEnemies(this);
+	this.movingBlock1.moveBlock();
 	this.character.x += this.character.xSpeed;
 	this.checkCollisions();
 }
@@ -70,7 +68,9 @@ Game.prototype.renderAll = function () {
 	this.ctx.fillStyle = "#DEE5E5";
 	this.ctx.fillRect(0, 0, this.canvas.width, this.canvas.height);
 	this.ctx.fillStyle = "#161616";
+	
 	this.levels.renderLevel();
+	this.levels.renderMovingBlocks();
 	this.levels.renderEnemies(this);
 	this.character.render(this);
 	

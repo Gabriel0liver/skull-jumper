@@ -24,7 +24,7 @@ Character.prototype.render = function(game){
     if(this.dying){
         this.dyingAnimation.renderChar(game);
         if(!this.dead){
-        deathSound.play()
+        deathSound.play();
         this.dyingAnimation.frameIndex = 0;
         somin = setTimeout(function(){
             this.dying=false;

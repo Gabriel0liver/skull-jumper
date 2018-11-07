@@ -29,8 +29,13 @@ function main(){
 
         buttonStart = splashDom.querySelector('button');
         buttonStartListner = buttonStart.addEventListener('click', buildGameScreen);
+        buttonHoverListner = buttonStart.addEventListener("mouseover",makeClickSound);
 
         //buildGameScreen();
+    }
+
+    function makeClickSound(){
+        clickSound.play()
     }
 
     function destroySplash(){
@@ -81,6 +86,7 @@ function main(){
 
         buttonReset = winDom.querySelector('button');
         buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);
+        buttonHoverListner = buttonReset.addEventListener("mouseover",makeClickSound);
         
     }
 
