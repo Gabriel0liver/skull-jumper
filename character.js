@@ -22,7 +22,10 @@ function Character(){
 
 Character.prototype.render = function(game){
     if(this.dying){
-        this.dyingAnimation.renderChar(game);
+        //
+        
+        //this.idleAnimationRight.renderChar(game);
+        game.fadeScreen();
         if(!this.dead){
         deathSound.play();
         this.dyingAnimation.frameIndex = 0;
@@ -31,8 +34,8 @@ Character.prototype.render = function(game){
             this.dead=false;
             this.y = 300;
             this.x = 0;
-        }.bind(this),800)}
-        this.dead = true;
+        }.bind(this),500)}
+        this.dead = true; 
     }else{
         if(this.xSpeed > 0){
             this.walkingRight = true;

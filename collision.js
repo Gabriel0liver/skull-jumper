@@ -41,6 +41,7 @@ Game.prototype.checkCollisions = function(){
     
 		if (collidesBottom && collidesLeft && collidesRight && collidesTop && !this.character.dying) {
 			this.character.dying = true;
+			
 		}
 	}.bind(this))
 
@@ -96,8 +97,8 @@ Game.prototype.checkCollisions = function(){
 	}
 	if(this.character.y > this.canvas.height)	{
 		deathSound.play();
-		this.character.y = 300;
-		this.character.x = 0;
+		fadingScreen = true;
+		
 	}
 	if(this.character.x + this.character.size > this.canvas.width){
 		this.character.x = this.levels.nextLevel(this);

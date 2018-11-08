@@ -58,6 +58,7 @@ function main(){
                         </section>
                     </div>
                     <canvas></canvas>
+                    <div class="black-bo"></div>
                 </div>
             </main>
         `);
