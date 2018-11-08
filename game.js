@@ -88,6 +88,7 @@ Game.prototype.renderAll = function () {
 	this.character.render(this);
 	this.ctx.strokeStyle = "#504F59";
 	this.ctx.fillStyle = "#504F59";
+	
 	if(fadingScreen){
 		this.fadeScreen();
 	}	

@@ -10,7 +10,7 @@ Game.prototype.checkCollisions = function(){
     
 		if (collidesBottom && collidesLeft && collidesRight && collidesTop) {
       //this.character.jumped = false;
-      if(this.character.collisionBottom && this.character.ySpeed >= 0){
+      if(this.character.collisionBottom && this.character.ySpeed >= 0 && this.character.x + this.character.size > block.x+10 && this.character.x <= block.x + block.size -15){
 				if(this.character.jumped){
 					hitGroundSound.play();
 				}
@@ -19,9 +19,9 @@ Game.prototype.checkCollisions = function(){
         this.time = 0
 				this.collision = true;
 				this.character.collisionRight = false;
-      }else if(this.character.x + this.character.size -5 >= block.x && this.character.x + this.character.size <= block.x + 10){
+      }else if(this.character.x + this.character.size -5 >= block.x && this.character.x + this.character.size <= block.x + 15){
 				this.character.collisionRight = true;
-      }else if(this.character.x +5 <= block.x + block.size && this.character.x >= block.x + block.size -10){
+      }else if(this.character.x +5 <= block.x + block.size && this.character.x >= block.x + block.size -15){
 				this.character.collisionLeft = true;
 			}else if(this.character.y <= block.y + block.size && this.character.y >= block.y + block.size -15){
 				this.ySpeed = 0;

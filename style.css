@@ -17,12 +17,17 @@ body{
 }
 
 .canvas{
-    margin-top:55px;
+    margin-top:30px;
     text-align: center;
 }
 
-.win, .splash{
+.splash{
     margin-top: 250px;
+    text-align: center;
+}
+
+.win{
+    margin-top: 150px;
     text-align: center;
 }
 
@@ -68,10 +73,13 @@ button{
   }
 
   .header{
-      margin-left: 20%;
-      margin-right: 20%;
+      position: relative;
+      bottom: -30px;
       display: flex;
       justify-content: space-between;
+      width: 950px;
+      margin: 0 auto;
+      max-width: 100%;
   }
 
   .black-box{
@@ -85,4 +93,28 @@ button{
     max-width: 100%;
   }
 
-  
+  input{
+      width: 150px;
+  }
+
+  #submit{
+    font-family: 'Press Start 2P', cursive;
+    margin-top: 0px;
+    font-weight: bold;
+    font-size: 1em;
+    color:white;
+    background-color: black;
+    border: 0;
+    border-radius: 10px;
+    width: 100px;
+    height: 50px;
+  }
+
+  ul{
+      list-style-type: none;
+      margin-top: 10px;
+  }
+
+  h4{
+      margin-top: 15px;
+  }

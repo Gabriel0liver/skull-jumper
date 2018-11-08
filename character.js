@@ -47,8 +47,7 @@ Character.prototype.render = function(game){
         }else if(this.jumped && !this.walkingRight){
             this.jumpAnimationLeft.renderChar(game);
         }else if(this.xSpeed > 0){
-            this.walkingAnimationRight.renderChar(game);
-             
+            this.walkingAnimationRight.renderChar(game);   
         }else if (this.xSpeed < 0){
             this.walkingAnimationLeft.renderChar(game);
             this.walkingRight = false;
