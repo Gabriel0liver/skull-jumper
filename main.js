@@ -13,6 +13,7 @@ function main(){
     var winDom;
     var buttonStartListner;
     var buttonRestartListner;
+    // unused variables here
     var buttonHoverListner;
     var buttonSubmitListner;
     var buttonStart;
@@ -39,6 +40,7 @@ function main(){
         document.body.appendChild(splashDom);
 
         buttonStart = splashDom.querySelector('button');
+        // you declared this variables above but you don't need them. Assigning them here is not doing anything
         buttonStartListner = buttonStart.addEventListener('click', buildGameScreen);
         buttonHoverListner = buttonStart.addEventListener("mouseover",makeClickSound);
 
@@ -120,6 +122,7 @@ function main(){
 
         buttonReset = document.getElementById('reset');
         buttonSubmit = document.getElementById("submit");
+        // No need to assign the event listeners
         buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);
         buttonSubmitListner = buttonSubmit.addEventListener("click",storeScore)
 

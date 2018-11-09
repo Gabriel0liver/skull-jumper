@@ -1,4 +1,5 @@
 function Levels (game){
+  // Avoid passing the this, It should be the levels constructor that creates the blocks and enemies
   this.level1 = [game.block1,game.block2];
   this.level2 = [game.block3,game.block4,game.block5];
   this.level3 = [game.block3,game.block4,game.block6,game.block7];

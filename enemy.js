@@ -40,6 +40,8 @@ Enemy.prototype.move = function(){
   }
 }
 
+// This does not belong here, It should be the level that creates it. It's also bad practice to set the properties like this. You should have a file where you store everthing that a level needs and use that to create the enemies acordingly
+
 Game.prototype.createEnemies = function(){
   this.enemy1 = new Enemy;
   this.enemy1.x = 500;

@@ -12,6 +12,7 @@ Block.prototype.render = function(){
     roundRect(this.ctx,this.x,this.y,this.size,this.size,4,true,false)
 }
 
+// This does not belong here
 Game.prototype.createBlocks = function(){
 	this.block1 = new Block();
 	this.block1.x = 0;
@@ -94,6 +95,8 @@ Game.prototype.createBlocks = function(){
 	this.block20.y = 240;
     this.block20.size = 200;
 }
+
+// Avoid global functions and vars
 
 function roundRect(ctx, x, y, width, height, radius, fill, stroke) {
     if (typeof stroke == "undefined" ) {

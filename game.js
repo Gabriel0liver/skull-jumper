@@ -7,6 +7,8 @@ function Game(){
 
 
 Game.prototype.start = function () {
+
+	// A lot of this properties should actually be in the constructor function
 	this.canvas = document.querySelector("canvas");
 	this.ctx = this.canvas.getContext("2d");
 
@@ -70,6 +72,7 @@ Game.prototype.startLoop = function(){
 	function loop(){
 		this.renderAll();
 		this.update();
+		// I don't know where you are clearing the screen but it should be here
 		this.totalTime ++;
 		this.convertedTime = this.convertTime(this.totalTime)
 		if(!this.levels.gameIsOver){
@@ -85,6 +88,7 @@ Game.prototype.update = function(){
 	this.movement();
 	this.levels.moveEnemies(this);
 	this.levels.moveBlocks();
+	// This logic should be inside of the player
 	this.character.x += this.character.xSpeed;
 	this.checkCollisions();
 }
@@ -107,6 +111,7 @@ Game.prototype.renderAll = function () {
 }	
 
 Game.prototype.convertTime = function(time){
+	// Avoid reassigning variables that come from the functions. Create new ones
 	time = Math.floor(time/60);
 	var minutes = Math.floor(time/60);
 	var seconds = time%60
@@ -131,6 +136,7 @@ Game.prototype.fadeScreen = function(){
 			this.fadePosition = 1;
 			this.fadingBlack = false;
 			if(true){
+				// this logic belongs to the player
 				this.character.y = 300;
 				this.character.x = 0;
 			}
@@ -150,6 +156,7 @@ Game.prototype.fadeScreen = function(){
 }
 
 Game.prototype.renderBackground = function(){
+	// Extra comma at the end
 	this.ctx.drawImage(this.bG1,0, 0,);
 	this.ctx.drawImage(this.bG2,this.character.x/300-5, 0,);
 	this.ctx.drawImage(this.bG3,this.character.x/125-10, 0,);
