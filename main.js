@@ -14,8 +14,15 @@ function main(){
     var buttonStartListner;
     var buttonRestartListner;
     var buttonHoverListner;
+    var buttonSubmitListner;
     var buttonStart;
     var buttonReset;
+    var buttonSubmit;
+
+    var scores = JSON.parse(localStorage.getItem("scores"))
+    
+    var timeDisplay;
+    var canPublish = true;
 
     function buildSplash(){
 
@@ -77,11 +84,10 @@ function main(){
         
     }
 
-    function buildWinGame(time1){
+    function buildWinGame(time){
         destroyGameScreen();
         
-        timeDisplay = time1
-        //console.log(timeDisplay)
+        timeDisplay = time
 
         winDom = buildDom(`
             <main class="win">
@@ -89,7 +95,7 @@ function main(){
                 <section></section>
                 <label for="name">Name: </label>
                 <input type="text" name="name" id="userInput">
-                <button id="submit" class="hvr-grow" onClick="storeScore()">Submit</button>
+                <button id="submit" class="hvr-grow" >Submit</button>
                 <div>
                     <h4>High scores:</h4>
                     <ul>
@@ -106,9 +112,80 @@ function main(){
 
         document.body.appendChild(winDom);
 
+        displayTopScores()
+        
+
+        buttonReset = document.getElementById('reset');
+        buttonSubmit = document.getElementById("submit");
+        buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);
+        buttonSubmitListner = buttonSubmit.addEventListener("click",storeScore)
+
+        buttonHoverListner = buttonReset.addEventListener("mouseover",makeClickSound);
+
+        
+    }
+
+    function destroyWinGame(){
+        if(winDom){
+            winDom.remove();
+            buttonReset.removeEventListener("click",buttonRestartListner);
+        }
+    }
+    
+
+    function storeScore(){
+        if(canPublish){
+        var newName = document.getElementById("userInput").value;
+        var timeArray = timeDisplay.split(":");
+        var minutes = parseFloat(timeArray[0]);
+        var seconds = parseFloat(timeArray[1]);
+    
+        var totalSeconds = minutes*60+seconds;
+        var foundName = false;
+    
+        scores.forEach(function(object){
+            if(object.name === newName){
+                foundName = true;
+                if(object.seconds > totalSeconds){
+                    object.seconds = totalSeconds;
+                    object.timeDisplay = timeDisplay;
+                }
+            }
+        })
+        
+        if(!foundName){
+            scores.push({
+                name: newName,
+                timeDisplay: timeDisplay,
+                seconds: totalSeconds
+            });
+        }
+        scores.sort(function(a,b){
+            return a.seconds -b.seconds;
+        })
+        
+    
+        localStorage.setItem("scores",JSON.stringify(scores))
+    
+        displayTopScores()
+        canPublish = false;
+        }
+    }
+    
+    
+    
+    
+    
+    function displayTopScores(){
+
         scores = JSON.parse(localStorage.getItem("scores"))
 
-        document.querySelector("section").innerText = "Your time:  "+time1;
+        if(scores === null){
+            scores = [];
+            localStorage.setItem("scores",JSON.stringify(scores))
+        }
+
+        document.querySelector("section").innerText = "Your time:  "+time;
         if(scores.length > 0){
             document.getElementById("1").innerText = "1-" + scores[0].name + ": " + scores[0].timeDisplay;
         }
@@ -123,68 +200,11 @@ function main(){
         }
         if(scores.length > 4){
             document.getElementById("5").innerText = "5-" + scores[4].name + ": " + scores[4].timeDisplay;
-        }
-
-        buttonReset = document.getElementById('reset');
-        buttonRestartListner = buttonReset.addEventListener('click', buildGameScreen);
-        buttonHoverListner = buttonReset.addEventListener("mouseover",makeClickSound);
-
-        
-    }
-
-    function destroyWinGame(){
-        if(winDom){
-            winDom.remove();
-            buttonReset.removeEventListener("click",buttonRestartListner);
-        }
-    }
-
-    
+        } 
+    }   
 
     buildSplash();
 
 }
 
 window.addEventListener('load', main);
-
-function storeScore(){
-    var newName = document.getElementById("userInput").value;
-    var timeArray = timeDisplay.split(":");
-    var minutes = parseFloat(timeArray[0]);
-    var seconds = parseFloat(timeArray[1]);
-
-    var totalSeconds = minutes*60+seconds;
-    var foundName = false;
-
-    scores.forEach(function(object){
-        if(object.name === newName){
-            foundName = true;
-        }
-    })
-    
-    if(!foundName){
-    scores.push({
-        name: newName,
-        timeDisplay: timeDisplay,
-        seconds: totalSeconds
-    });
-    
-    }
-    scores.sort(function(a,b){
-        return a.seconds -b.seconds;
-    })
-    
-
-    localStorage.setItem("scores",JSON.stringify(scores))
-}
-
-var scores = JSON.parse(localStorage.getItem("scores"))
-
-var timeDisplay;
-
-
-
-
-
-
-//document.querySelector().appendChild
