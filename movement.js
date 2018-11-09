@@ -25,6 +25,10 @@ Game.prototype.handleKeyDown = function(event){
     this.levels.currentLevelIndex=parseFloat(event.key)
   }
 
+  if(event.key === "p"){
+    this.levels.nextLevel(this);
+  }
+
 }
 
 Game.prototype.handleKeyUp = function(event){
