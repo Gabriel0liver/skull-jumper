@@ -9,10 +9,9 @@ Game.prototype.checkCollisions = function(){
     this.character.collisionBottom = this.character.y + this.character.size >= block.y && this.character.y + this.character.size <= block.y+30;
     
 		if (collidesBottom && collidesLeft && collidesRight && collidesTop) {
-      //this.character.jumped = false;
       if(this.character.collisionBottom && this.character.ySpeed >= 0 && this.character.x + this.character.size > block.x+10 && this.character.x <= block.x + block.size -15){
 				if(this.character.jumped){
-					hitGroundSound.play();
+					this.hitGroundSound.play();
 				}
 				this.character.jumped = false;
         this.character.y = block.y - this.character.size;
@@ -54,10 +53,9 @@ Game.prototype.checkCollisions = function(){
     this.character.collisionBottom = this.character.y + this.character.size >= block.y && this.character.y + this.character.size <= block.y+20;
     
 		if (collidesBottom && collidesLeft && collidesRight && collidesTop) {
-      //this.character.jumped = false;
       if(this.character.collisionBottom && this.character.ySpeed >= 0){
 				if(this.character.jumped){
-					hitGroundSound.play();
+					this.hitGroundSound.play();
 				}
 				if(block.movingRight){
 					this.character.x += 2;
@@ -96,8 +94,8 @@ Game.prototype.checkCollisions = function(){
 		this.character.y += this.character.ySpeed;
 	}
 	if(this.character.y > this.canvas.height)	{
-		deathSound.play();
-		fadingScreen = true;
+		this.deathSound.play();
+		this.fadingScreen = true;
 		
 	}
 	if(this.character.x + this.character.size > this.canvas.width){

@@ -19,6 +19,9 @@ function main(){
     var buttonReset;
     var buttonSubmit;
 
+    var clickSound = document.createElement("audio");
+    clickSound.src = ("./sounds/click.mp3");
+
     var scores = JSON.parse(localStorage.getItem("scores"))
     
     var timeDisplay;
@@ -112,7 +115,7 @@ function main(){
 
         document.body.appendChild(winDom);
 
-        displayTopScores()
+        displayTopScores(time)
         
 
         buttonReset = document.getElementById('reset');
@@ -167,7 +170,7 @@ function main(){
     
         localStorage.setItem("scores",JSON.stringify(scores))
     
-        displayTopScores()
+        displayTopScores(timeDisplay)
         canPublish = false;
         }
     }
@@ -176,7 +179,7 @@ function main(){
     
     
     
-    function displayTopScores(){
+    function displayTopScores(time){
 
         scores = JSON.parse(localStorage.getItem("scores"))
 

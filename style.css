@@ -6,14 +6,14 @@
     font-family: 'Press Start 2P', cursive;
 }
 
+body{
+    background-color: #F2F2F2
+}
+
 canvas{
     border: solid 3px black;
     border-radius: 3px;
     max-width: 100%;
-}
-
-body{
-    background-color: #F2F2F2
 }
 
 .canvas{
@@ -34,7 +34,6 @@ body{
 p,section{
     font-family: 'Press Start 2P', cursive;
     margin-top: 50px;
-    
 }
 
 h1{
@@ -56,48 +55,7 @@ button{
     height: 100px;
 }
 
-.hvr-grow {
-    display: inline-block;
-    vertical-align: middle;
-    -webkit-transform: perspective(1px) translateZ(0);
-    transform: perspective(1px) translateZ(0);
-    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
-    -webkit-transition-duration: 0.3s;
-    transition-duration: 0.3s;
-    -webkit-transition-property: transform;
-    transition-property: transform;
-  }
-  .hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
-    -webkit-transform: scale(1.1);
-    transform: scale(1.1);
-  }
-
-  .header{
-      position: relative;
-      bottom: -30px;
-      display: flex;
-      justify-content: space-between;
-      width: 950px;
-      margin: 0 auto;
-      max-width: 100%;
-  }
-
-  .black-box{
-    position: relative;
-    text-align: center;
-    background-color: black;
-    width: 960px;
-    height: 540px;
-    margin: 0 auto;
-    top: -543px;
-    max-width: 100%;
-  }
-
-  input{
-      width: 150px;
-  }
-
-  #submit{
+#submit{
     font-family: 'Press Start 2P', cursive;
     margin-top: 0px;
     font-weight: bold;
@@ -108,13 +66,46 @@ button{
     border-radius: 10px;
     width: 100px;
     height: 50px;
-  }
+}
 
-  ul{
-      list-style-type: none;
-      margin-top: 10px;
-  }
+.hvr-grow {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: transform;
+    transition-property: transform;
+}
 
-  h4{
-      margin-top: 15px;
-  }
+.hvr-grow:hover, .hvr-grow:focus, .hvr-grow:active {
+    -webkit-transform: scale(1.1);
+    transform: scale(1.1);
+}
+
+.header{
+    position: relative;
+    bottom: -30px;
+    display: flex;
+    justify-content: space-between;
+    width: 950px;   
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+input{
+    width: 150px;
+}
+
+
+
+ul{
+    list-style-type: none;
+    margin-top: 10px;
+}
+
+h4{
+    margin-top: 15px;
+}

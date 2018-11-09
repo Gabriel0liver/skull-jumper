@@ -36,12 +36,26 @@ Game.prototype.start = function () {
 	this.totalTime = 0;
 	this.convertedTime;
 
-	music.play();
-	music.volume = 0.07;
-	hitGroundSound.volume= 0.1;
-	jumpSound.volume = 0.05;
-	deathSound.volume = 0.1;
-	music.loop = true;
+	this.music = document.createElement("audio");
+	this.jumpSound = document.createElement("audio");
+	this.hitGroundSound = document.createElement("audio");
+	this.deathSound = document.createElement("audio");
+	this.music.src = ("./sounds/music.mp3");
+	this.jumpSound.src = ("./sounds/jump.mp3");
+	this.hitGroundSound.src = ("./sounds/hitGround.mp3");
+	this.deathSound.src = ("./sounds/death.mp3");
+
+	this.music.play();
+	this.music.volume = 0.07;
+	this.hitGroundSound.volume= 0.1;
+	this.jumpSound.volume = 0.05;
+	this.deathSound.volume = 0.1;
+	this.music.loop = true;
+
+	
+	this.fadePosition = 0;
+	this.fadingBlack = true;
+	this.fadingScreen = false;
 
 	this.levels.gameIsOver = false;
 	
@@ -54,16 +68,15 @@ Game.prototype.start = function () {
 
 Game.prototype.startLoop = function(){
 	function loop(){
-
 		this.renderAll();
 		this.update();
 		this.totalTime ++;
 		this.convertedTime = this.convertTime(this.totalTime)
 		if(!this.levels.gameIsOver){
 		window.requestAnimationFrame(loop.bind(this));
-		}
 		document.querySelector("p").innerHTML = "TIME "+this.convertedTime;
 		document.querySelector("section").innerHTML = "LEVEL "+(this.levels.currentLevelIndex+1);
+		}	
 	}
 	window.requestAnimationFrame(loop.bind(this));
 }
@@ -88,24 +101,10 @@ Game.prototype.renderAll = function () {
 	this.character.render(this);
 	this.ctx.strokeStyle = "#504F59";
 	this.ctx.fillStyle = "#504F59";
-	
-	if(fadingScreen){
+	if(this.fadingScreen){
 		this.fadeScreen();
 	}	
-}
-
-	var music = document.createElement("audio");
-	var jumpSound = document.createElement("audio");
-	var hitGroundSound = document.createElement("audio");
-	var clickSound = document.createElement("audio");
-	var deathSound = document.createElement("audio");
-	music.src = ("./sounds/music.mp3");
-	jumpSound.src = ("./sounds/jump.mp3");
-	hitGroundSound.src = ("./sounds/hitGround.mp3");
-	clickSound.src = ("./sounds/click.mp3");
-	deathSound.src = ("./sounds/death.mp3");
-
-	
+}	
 
 Game.prototype.convertTime = function(time){
 	time = Math.floor(time/60);
@@ -120,41 +119,35 @@ Game.prototype.convertTime = function(time){
 	return minutes+":"+seconds;
 }
 
-var fadePosition = 0;
-var fadingBlack = true;
-var fadingScreen = false;
 
 Game.prototype.fadeScreen = function(){
-	if(fadingBlack){
-		//debugger;
-		fadePosition += 0.06
-		this.ctx.globalAlpha = fadePosition;
+	if(this.fadingBlack){
+		this.fadePosition += 0.06
+		this.ctx.globalAlpha = this.fadePosition;
 		this.ctx.fillStyle = "#000000"
 		this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height)
 		this.ctx.globalAlpha = 1;
-		if(fadePosition >= 0.98){
-			fadePosition = 1;
-			fadingBlack = false;
+		if(this.fadePosition >= 0.98){
+			this.fadePosition = 1;
+			this.fadingBlack = false;
 			if(true){
 				this.character.y = 300;
 				this.character.x = 0;
 			}
 		}
 	}else{
-		fadePosition -= 0.06
-		this.ctx.globalAlpha = fadePosition;
+		this.fadePosition -= 0.06
+		this.ctx.globalAlpha = this.fadePosition;
 		this.ctx.fillStyle = "#000000"
 		this.ctx.fillRect(0,0,this.canvas.width,this.canvas.height)
 		this.ctx.globalAlpha = 1;
-		if(fadePosition <= 0.2){
-			fadePosition = 0;
-			fadingScreen = false;
-			fadingBlack = true;
+		if(this.fadePosition <= 0.2){
+			this.fadePosition = 0;
+			this.fadingScreen = false;
+			this.fadingBlack = true;
 		}
 	}
-
 }
-
 
 Game.prototype.renderBackground = function(){
 	this.ctx.drawImage(this.bG1,0, 0,);

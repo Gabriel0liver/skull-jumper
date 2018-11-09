@@ -22,12 +22,9 @@ function Character(){
 
 Character.prototype.render = function(game){
     if(this.dying){
-        //
-        
-        //this.idleAnimationRight.renderChar(game);
         game.fadeScreen();
         if(!this.dead){
-        deathSound.play();
+        game.deathSound.play();
         this.dyingAnimation.frameIndex = 0;
         somin = setTimeout(function(){
             this.dying=false;

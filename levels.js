@@ -72,6 +72,7 @@ Levels.prototype.nextLevel = function(game){
 Levels.prototype.finishGame = function(game) {
   this.gameOverCallback(game.convertedTime);
   game.totalTime=0;
+  game.music.pause();
 }
 
 Levels.prototype.onGameOverCallback = function(callback) {
