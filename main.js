@@ -59,7 +59,7 @@ function main(){
         destroyWinGame();
 
         gameDom = buildDom(`
-            <main class="game container">
+            <main class="gameContainer">
                 <div class="canvas">
                     <div class="header">
                         <p></p>
