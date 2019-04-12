@@ -157,6 +157,7 @@ function main(){
         })
         
         if(!foundName){
+            canPublish = false;
             scores.push({
                 name: newName,
                 timeDisplay: timeDisplay,
@@ -171,7 +172,7 @@ function main(){
         localStorage.setItem("scores",JSON.stringify(scores))
     
         displayTopScores(timeDisplay)
-        canPublish = false;
+        
         }
     }
     
