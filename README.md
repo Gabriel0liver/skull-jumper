@@ -3,6 +3,9 @@
 ## Description
 Skull jumper is a game where the objective is to control the main character and make him go from one side of the screen to the other. On the way you will come accross challanges like jumping over big drops.
 
+![Screenshot (19)](https://github.com/Gabriel0liver/skull-jumper/assets/40140789/22d467b0-bccf-4658-a81e-961b507d5cca)
+![Screenshot (21)](https://github.com/Gabriel0liver/skull-jumper/assets/40140789/ff294199-9b07-4542-8e06-44323ee426da)
+![Screenshot (22)](https://github.com/Gabriel0liver/skull-jumper/assets/40140789/bd5d4ef5-dcf7-4c7b-9eaf-1b5db2412a84)
 
 ## MVP (DOM - CANVAS)
 *CANVAS*, The mvp is a game where the player can move and jump
